@@ -1,0 +1,50 @@
+{
+    "e116a1cd-4619-4335-87c8-69a3834072e6": {
+        "nombre": "Juan",
+        "apellidoPaterno": "Pérez",
+        "apellidoMaterno": "García",
+        "edad": 30
+    },
+    "a2b1c3d4-e5f6-7890-ab12-cd34ef567890": {
+        "nombre": "María",
+        "apellidoPaterno": "López",
+        "apellidoMaterno": "Martínez",
+        "edad": 25
+    },
+    "b3c2d1e4-f5a6-7890-bc12-de34fa567890": {
+        "nombre": "Carlos",
+        "apellidoPaterno": "Hernández",
+        "apellidoMaterno": "Rodríguez",
+        "edad": 40
+    },
+    "c4d3e2f1-a5b6-7890-cd12-ef34ab567890": {
+        "nombre": "Ana",
+        "apellidoPaterno": "González",
+        "apellidoMaterno": "Sánchez",
+        "edad": 35
+    },
+    "d5e4f3a2-b6c7-7890-de12-fa34bc567890": {
+        "nombre": "Luis",
+        "apellidoPaterno": "Ramírez",
+        "apellidoMaterno": "Torres",
+        "edad": 28
+    },
+    "e6f5a4b3-c7d8-7890-ef12-ab34cd567890": {
+        "nombre": "Laura",
+        "apellidoPaterno": "Flores",
+        "apellidoMaterno": "Vázquez",
+        "edad": 32
+    },
+    "f7a6b5c4-d8e9-7890-fa12-bc34de567890": {
+        "nombre": "José",
+        "apellidoPaterno": "Díaz",
+        "apellidoMaterno": "Cruz",
+        "edad": 45
+    },
+    "a8b7c6d5-e9f0-7890-ab12-cd34ef567890": {
+        "nombre": "Elena",
+        "apellidoPaterno": "Morales",
+        "apellidoMaterno": "Ortiz",
+        "edad": 29
+    }
+}
