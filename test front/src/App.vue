@@ -2,17 +2,8 @@
 import PatientList from './components/PatientList.vue'
 import PatientSpecificationList from './components/PatientSpecificationList.vue'
 import { usePatientsStore } from './stores/patients'
-import { ref } from 'vue'
-const count = ref(0)
+
 const patientsStore = usePatientsStore()
-
-
-const fetchPatients = () => {
-  console.log('Fetching patients...');
-  patientsStore.fetch();
-  count.value = patientsStore.patients.length;
-}
-
 </script>
 
 <template>
@@ -23,7 +14,7 @@ const fetchPatients = () => {
   </header>
   
   <main>
-    <button @click="fetchPatients">Listar pacientes {{ count }}</button>
+    <button @click="patientsStore.fetch">Listar pacientes</button>
     <PatientList/>
     <PatientSpecificationList/>
   </main>

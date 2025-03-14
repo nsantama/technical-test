@@ -7,14 +7,22 @@ export const usePatientsStore = defineStore('patients', {
   
   actions: {
     fetch() {
-    const newData = [
-      { patientId: '1', patientName: 'Juan', patientLastName: 'Perez', patientAge: 30 },
-      { patientId: '2', patientName: 'Maria', patientLastName: 'Gomez', patientAge: 25 },
-      { patientId: '3', patientName: 'Pedro', patientLastName: 'Garcia', patientAge: 40 },
-      { patientId: '4', patientName: 'Ana', patientLastName: 'Jimenez', patientAge: 35 },
-      { patientId: '5', patientName: 'Luis', patientLastName: 'Rodriguez', patientAge: 28 },
-    ];
-      this.patients = newData;
+      try {
+        fetch('http://127.0.0.1:5001/technical-test-hicapps/us-central1/listaPacientes')
+          .then(response => response.json())
+          .then(data => {
+            const newData = [];
+            for (let patient in data) {
+              newData.push({
+                id: patient,
+                ...data[patient]
+              });
+            }
+            this.patients = newData;
+          });
+      } catch (error) {
+        console.error('Error fetching patients', error);
+      }
     },
   },
 })

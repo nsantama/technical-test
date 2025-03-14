@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import queryString  from 'query-string'
 
 export const useIndicationsStore = defineStore('indications', {
   state: () => {
@@ -6,26 +7,23 @@ export const useIndicationsStore = defineStore('indications', {
   },
 
   actions: {
-    // fetch?
     fetch(patientId) {
-      console.log('Received patientId:', patientId);
-      const newData = [
-        {
-          indicacion: "Tomar medicamento A cada 8 horas",
-          fechaInicio: "2023-10-01",
-          fechaFin: "2023-10-07",
-          dosis: "1 tableta",
-          frecuencia: "cada 8 horas"
-        },
-        {
-          indicacion: "Tomar medicamento B cada 12 horas",
-          fechaInicio: "2023-10-01",
-          fechaFin: "2023-10-07",
-          dosis: "1 tableta",
-          frecuencia: "cada 12 horas"
-        }
-      ];
-      this.indications = newData;
+      try {
+        fetch('http://127.0.0.1:5001/technical-test-hicapps/us-central1/listaIndicacionesPaciente?' + queryString.stringify({ patientId }))
+          .then(response => response.json())
+          .then(data => {
+            const newData = [];
+            for (let indication in data) {
+              newData.push({
+                id: indication,
+                ...data[indication]
+              });
+            }
+            this.indications = newData;
+          });
+      } catch (error) {
+        console.error('Error fetching indications', error);
+      }
     },
   },
 })

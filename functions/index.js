@@ -10,27 +10,27 @@ const app = initializeApp();
 exports.populateDatabase = onRequest(async (req, res) => {
   const db = getDatabase(app);
 
-  await db.ref("/patients").set(patientData);
-  await db.ref("/indications").set(indications);
+  await db.ref("/pacientes").set(patientData);
+  await db.ref("/indicaciones").set(indications);
 
   logger.info("Populating patients database", {structuredData: patientData});
   logger.info("Populating indications database", {structuredData: indications});
   res.send("Populating database!");
 });
 
-exports.getPatients = onRequest(async (req, res) => {
+exports.listaPacientes = onRequest(async (req, res) => {
   const db = getDatabase(app);
-  const snapshot = await db.ref("/patients").get();
+  const snapshot = await db.ref("/pacientes").get();
   const patients = snapshot.val();
 
   logger.info("Getting patients", {structuredData: patients});
   res.send(patients);
 });
 
-exports.getPatientIndications = onRequest(async (req, res) => {
+exports.listaIndicacionesPaciente = onRequest(async (req, res) => {
   const patientId = req.query.patientId;
   const db = getDatabase(app);
-  const snapshot = await db.ref(`/indications/${patientId}`).get();
+  const snapshot = await db.ref(`/indicaciones/${patientId}`).get();
   const indications = snapshot.val();
 
   logger.info("Getting indications", {structuredData: indications});

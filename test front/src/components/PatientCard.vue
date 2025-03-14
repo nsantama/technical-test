@@ -1,17 +1,16 @@
 <script setup>
 import { useIndicationsStore } from '../stores/indications'
-const props = defineProps(['patientId', 'patientName', 'patientLastName', 'patientAge'])
+const props = defineProps(['id', 'name', 'Lastname', 'SecondLastname', 'age'])
 const indicationStore = useIndicationsStore()
 const sendId = () => {
-  console.log("sending...");
-  indicationStore.fetch(props.patientId);
+  indicationStore.fetch(props.id);
 };
 </script>
 
 <template>
   <div class="patient-card">
     <button @click="sendId">Ver especificaciones</button>
-    <h2>{{ patientName }} {{ patientLastName }}</h2>
-    <p>{{ patientAge }} años</p>
+    <h2>{{ name }} {{ Lastname }} {{ SecondLastname }}</h2>
+    <p>{{ age }} años</p>
   </div>
 </template>
