@@ -1,30 +1,37 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import PatientList from './components/PatientList.vue'
+import PatientSpecificationList from './components/PatientSpecificationList.vue'
+import { usePatientsStore } from './stores/patients'
+import { ref } from 'vue'
+const count = ref(0)
+const patientsStore = usePatientsStore()
+
+
+const fetchPatients = () => {
+  console.log('Fetching patients...');
+  patientsStore.fetch();
+  count.value = patientsStore.patients.length;
+}
+
 </script>
 
 <template>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    
+  <header>
     <div class="wrapper">
+      <p>Posibles instrucciones para la app</p>
     </div>
-  </header> -->
-  <p>Hello World</p>
+  </header>
   
-  <!-- <main>
-    <TheWelcome />
-  </main> -->
+  <main>
+    <button @click="fetchPatients">Listar pacientes {{ count }}</button>
+    <PatientList/>
+    <PatientSpecificationList/>
+  </main>
 </template>
 
-<!-- <style scoped>
+<style scoped>
 header {
   line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
 }
 
 @media (min-width: 1024px) {
@@ -34,14 +41,10 @@ header {
     padding-right: calc(var(--section-gap) / 2);
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
   header .wrapper {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
   }
 }
-</style> -->
+</style>
