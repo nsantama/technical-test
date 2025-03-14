@@ -8,13 +8,17 @@ const patientsStore = usePatientsStore()
 
 <template>
   <header>
+    <h1>App test tecnico para Hicapps</h1>
+    <p>
+      Se necesita estar corriendo el emulador de firebase usando el comando 'firebase emulators:start', para luego cargar la base de datos con el boton correspondiente.
+    </p>
     <div class="wrapper">
-      <p>Posibles instrucciones para la app</p>
+      <button @click="patientsStore.fetch">Listar pacientes</button>
+      <button @click="patientsStore.fetch">Cargar base de datos</button>
     </div>
   </header>
   
   <main>
-    <button @click="patientsStore.fetch">Listar pacientes</button>
     <PatientList/>
     <PatientSpecificationList/>
   </main>
@@ -25,17 +29,44 @@ header {
   line-height: 1.5;
 }
 
+main {
+  padding: var(--section-gap);
+  padding-top: calc(var(--section-gap) / 3);
+  padding-bottom: calc(var(--section-gap) / 3);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--section-gap);
+}
+
 @media (min-width: 1024px) {
   header {
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
+    padding-left: calc(var(--section-gap) / 2);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-heading)
   }
 
   header .wrapper {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  header button {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-background-mute);
+    color: var(--color-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }
 </style>
