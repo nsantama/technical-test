@@ -4,6 +4,13 @@ import PatientSpecificationList from './components/PatientSpecificationList.vue'
 import { usePatientsStore } from './stores/patients'
 
 const patientsStore = usePatientsStore()
+const loadDatabase = () => {
+  try {
+    fetch('http://localhost:5001/technical-test-hicapps/us-central1/populateDatabase')
+  } catch (error) {
+    console.error('error populating database', error)
+  }
+}
 </script>
 
 <template>
@@ -14,7 +21,7 @@ const patientsStore = usePatientsStore()
     </p>
     <div class="wrapper">
       <button @click="patientsStore.fetch">Listar pacientes</button>
-      <button @click="patientsStore.fetch">Cargar base de datos</button>
+      <button @click="loadDatabase">Cargar base de datos</button>
     </div>
   </header>
   

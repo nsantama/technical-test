@@ -21,7 +21,10 @@ exports.populateDatabase = onRequest(async (req, res) => {
 exports.listaPacientes = onRequest(async (req, res) => {
   const db = getDatabase(app);
   const snapshot = await db.ref("/pacientes").get();
-  const patients = snapshot.val();
+  let patients = snapshot.val();
+  if (!patients) {
+    patients = {};
+  }
 
   logger.info("Getting patients", {structuredData: patients});
   res.send(patients);
@@ -31,7 +34,10 @@ exports.listaIndicacionesPaciente = onRequest(async (req, res) => {
   const patientId = req.query.patientId;
   const db = getDatabase(app);
   const snapshot = await db.ref(`/indicaciones/${patientId}`).get();
-  const indications = snapshot.val();
+  let indications = snapshot.val();
+  if (!indications) {
+    indications = {};
+  }
 
   logger.info("Getting indications", {structuredData: indications});
   res.send(indications);
